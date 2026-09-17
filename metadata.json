@@ -1,0 +1,6 @@
+{
+  "name": "Tabungan Cilik SD",
+  "description": "Aplikasi Buku Tabungan Digital Pelajar untuk Semua Instansi Sekolah (SD/MI, SMP/MTs, SMA/SMK, Pesantren, PAUD/TK), pencatatan mutasi kas terisolasi, kuitansi resmi, scan QR siswa, dan portal orang tua.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

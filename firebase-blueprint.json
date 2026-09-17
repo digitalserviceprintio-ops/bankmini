@@ -1,0 +1,281 @@
+{
+  "entities": {
+    "AdminAccount": {
+      "title": "AdminAccount",
+      "description": "Akun administrator bendahara sekolah untuk mengelola buku kas tabungan siswa.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID unik akun admin / bendahara"
+        },
+        "username": {
+          "type": "string",
+          "description": "Username akun bendahara"
+        },
+        "schoolName": {
+          "type": "string",
+          "description": "Nama instansi sekolah"
+        },
+        "institutionType": {
+          "type": "string",
+          "description": "Jenjang instansi sekolah (SD/MI, SMP/MTs, SMA/SMK, dll)"
+        },
+        "role": {
+          "type": "string",
+          "description": "Peran akun (admin, bendahara, wali_kelas)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp pembuatan akun"
+        }
+      },
+      "required": ["id", "username", "schoolName"]
+    },
+    "SchoolInfo": {
+      "title": "SchoolInfo",
+      "description": "Profil identitas instansi sekolah dan pengaturan tahun ajaran serta bendahara.",
+      "type": "object",
+      "properties": {
+        "adminId": {
+          "type": "string",
+          "description": "ID admin pemilik data sekolah"
+        },
+        "schoolName": {
+          "type": "string",
+          "description": "Nama resmi instansi sekolah"
+        },
+        "subName": {
+          "type": "string",
+          "description": "Sub-nama / dinas pembina sekolah"
+        },
+        "npsn": {
+          "type": "string",
+          "description": "Nomor Pokok Sekolah Nasional"
+        },
+        "institutionType": {
+          "type": "string",
+          "description": "Jenjang lembaga pendidikan"
+        },
+        "address": {
+          "type": "string",
+          "description": "Alamat lengkap sekolah"
+        },
+        "city": {
+          "type": "string",
+          "description": "Kota / Kabupaten sekolah"
+        },
+        "logoUrl": {
+          "type": "string",
+          "description": "URL logo resmi sekolah"
+        },
+        "academicYear": {
+          "type": "string",
+          "description": "Tahun ajaran aktif (contoh: 2024/2025)"
+        },
+        "semester": {
+          "type": "string",
+          "description": "Semester aktif (Ganjil / Genap)"
+        },
+        "treasurerName": {
+          "type": "string",
+          "description": "Nama lengkap bendahara sekolah"
+        },
+        "treasurerNip": {
+          "type": "string",
+          "description": "NIP / NUPTK bendahara sekolah"
+        },
+        "headmasterName": {
+          "type": "string",
+          "description": "Nama lengkap kepala sekolah"
+        },
+        "homeroomTeacherNip": {
+          "type": "string",
+          "description": "NIP kepala sekolah / wali kelas"
+        },
+        "maxDailyWithdrawal": {
+          "type": "number",
+          "description": "Batas maksimum penarikan harian per siswa"
+        }
+      },
+      "required": ["adminId", "schoolName"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Data rekening buku tabungan siswa penabung.",
+      "type": "object",
+      "properties": {
+        "adminId": {
+          "type": "string",
+          "description": "ID admin instansi sekolah"
+        },
+        "nis": {
+          "type": "string",
+          "description": "Nomor Induk Siswa"
+        },
+        "name": {
+          "type": "string",
+          "description": "Nama lengkap siswa"
+        },
+        "classId": {
+          "type": "string",
+          "description": "Kode rombel / kelas siswa"
+        },
+        "className": {
+          "type": "string",
+          "description": "Label nama kelas siswa"
+        },
+        "accountNo": {
+          "type": "string",
+          "description": "Nomor rekening tabungan siswa"
+        },
+        "bookNo": {
+          "type": "string",
+          "description": "Nomor buku tabungan fisik"
+        },
+        "balance": {
+          "type": "number",
+          "description": "Saldo simpanan tabungan saat ini"
+        },
+        "guardianName": {
+          "type": "string",
+          "description": "Nama orang tua / wali murid"
+        },
+        "guardianPhone": {
+          "type": "string",
+          "description": "Nomor WhatsApp orang tua / wali murid"
+        },
+        "photoUrl": {
+          "type": "string",
+          "description": "Foto profil siswa (URL atau base64)"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status keaktifan siswa (active/inactive)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Waktu pendaftaran rekening siswa"
+        }
+      },
+      "required": ["adminId", "nis", "name", "classId", "accountNo", "balance"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Catatan mutasi setoran dan penarikan kas buku tabungan siswa.",
+      "type": "object",
+      "properties": {
+        "adminId": {
+          "type": "string",
+          "description": "ID admin instansi sekolah"
+        },
+        "studentId": {
+          "type": "string",
+          "description": "ID siswa pemilik mutasi"
+        },
+        "studentNis": {
+          "type": "string",
+          "description": "NIS siswa"
+        },
+        "studentName": {
+          "type": "string",
+          "description": "Nama siswa"
+        },
+        "className": {
+          "type": "string",
+          "description": "Kelas siswa saat transaksi"
+        },
+        "type": {
+          "type": "string",
+          "description": "Jenis transaksi (deposit atau withdraw)"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Nominal transaksi"
+        },
+        "previousBalance": {
+          "type": "number",
+          "description": "Saldo sebelum transaksi"
+        },
+        "finalBalance": {
+          "type": "number",
+          "description": "Saldo setelah transaksi"
+        },
+        "category": {
+          "type": "string",
+          "description": "Kategori pos tabungan"
+        },
+        "note": {
+          "type": "string",
+          "description": "Catatan transaksi"
+        },
+        "officerName": {
+          "type": "string",
+          "description": "Nama petugas pencatat"
+        },
+        "date": {
+          "type": "string",
+          "description": "Tanggal transaksi format DD/MM/YYYY"
+        },
+        "time": {
+          "type": "string",
+          "description": "Waktu transaksi format HH:mm"
+        },
+        "transactionCode": {
+          "type": "string",
+          "description": "Kode struk transaksi unik"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp ISO transaksi"
+        }
+      },
+      "required": ["adminId", "studentId", "type", "amount", "finalBalance", "transactionCode"]
+    },
+    "SchoolClass": {
+      "title": "SchoolClass",
+      "description": "Daftar rombongan belajar / kelas yang dikelola oleh sekolah.",
+      "type": "object",
+      "properties": {
+        "adminId": {
+          "type": "string",
+          "description": "ID admin instansi sekolah"
+        },
+        "classes": {
+          "type": "array",
+          "description": "Daftar nama kelas",
+          "items": {
+            "type": "string"
+          }
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Waktu pembaruan kelas"
+        }
+      },
+      "required": ["adminId", "classes"]
+    }
+  },
+  "firestore": {
+    "/adminAccounts/{adminId}": {
+      "schema": "AdminAccount",
+      "description": "Data akun login admin bendahara sekolah"
+    },
+    "/schools/{schoolId}": {
+      "schema": "SchoolInfo",
+      "description": "Data profil identitas dan konfigurasi instansi sekolah"
+    },
+    "/students/{studentId}": {
+      "schema": "Student",
+      "description": "Data penabung siswa terdaftar"
+    },
+    "/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Riwayat mutasi setoran dan penarikan tabungan"
+    },
+    "/classes/{classId}": {
+      "schema": "SchoolClass",
+      "description": "Daftar rombel / kelas per instansi sekolah"
+    }
+  }
+}
